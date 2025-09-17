@@ -8,5 +8,6 @@ export default function RootLayout(){
         }}
     >
         <Stack.Screen name="index" options={{title: "Home page"}}/>
+        <Stack.Screen name="onboarding"/>
     </Stack>
 }
