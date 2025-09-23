@@ -6,8 +6,10 @@ export default function RootLayout(){
         screenOptions={{
             headerShown: false // this ensures tha navbar doesn't show
         }}
+        
     >
-        <Stack.Screen name="index" options={{title: "Home page"}}/>
-        <Stack.Screen name="onboarding"/>
+        <Stack.Screen name="index" />
+        <Stack.Screen name="auth" options={{title: "Sign in page"}}/>
+        
     </Stack>
 }
