@@ -14,7 +14,7 @@ const SignIn = () => {
                     style={styles.backgroundImage}
                 >
                     <KeyboardAvoidingView style={{flex: 1}}
-                        behavior='padding'
+                        behavior='padding' 
                     >
                         <ScrollView
                             contentContainerStyle={styles.scrollContent}
