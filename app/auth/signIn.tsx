@@ -2,6 +2,7 @@ import { StyleSheet, Text, View, ImageBackground, Dimensions, TextInput, Touchab
 
 import React from 'react'
 import Spacer from '../../components/Spacer';
+import { router } from 'expo-router';
 
 const {width, height} = Dimensions.get('screen');
 
@@ -13,39 +14,33 @@ const SignIn = () => {
                     source={require('../../assets/images/background-1.jpeg')}
                     style={styles.backgroundImage}
                 >
-                    <KeyboardAvoidingView style={{flex: 1}}
+                    <KeyboardAvoidingView 
+                        style={{flex: 1}}
                         behavior='padding' 
+                        keyboardVerticalOffset={-150}
                     >
-                        <ScrollView
-                            contentContainerStyle={styles.scrollContent}
-                            scrollEnabled={true}
-                        >
+
                             <View style={styles.contentContainer}>
-                            <View style={{alignItems: 'center', marginTop: height * 0.33}}>
-                                    <Text style={{color: 'white', fontSize: 35}}>Welcome here</Text>
-                                    <Text style={{color: 'gray', fontSize: 20}}>Log in to your account</Text>
-                            </View>
+                                <View style={{alignItems: 'center', }}>
+                                    <Text style={{color: 'white', fontSize: 35, fontWeight: 'bold'}}>Welcome Here</Text>
+                                    <Text style={{color: 'white', fontSize: 18, fontWeight: 'thin'}}>sign in to your account</Text>
+                                </View>
 
                                 <View style={{alignItems: 'center', marginTop: 20}}>
-                                    <TextInput
-                                        style={{borderColor: 'gray', borderWidth: 1, padding: 10, backgroundColor: '#1c1d20ff', width: width * 0.85, height: 55, borderRadius: 15}}
-                                    />
+                                    <TextInput style={styles.textInputStyle}/>
                                     <Spacer/>
-                                    <TextInput
-                                        style={{borderColor: 'gray', borderWidth: 1, padding: 10, backgroundColor: '#1c1d20ff', width: width * 0.85, height: 55, borderRadius: 15}}
-                                    />
+                                    <TextInput style={styles.textInputStyle} />
                                 </View>
-                            </View>
-                            <Spacer/>
-                            <Pressable 
-                            onPress={() => {console.log('sign in')}}
-                            style={{alignItems: 'center', justifyContent: 'center' ,backgroundColor: 'rgba(238, 238, 238, 0.57)', width: width * 0.65, height: 50, borderRadius: 20}}>
-                                <Text style={{fontSize: 30, color: 'black'}}>Hello</Text>
-                            </Pressable>
-                            <Spacer height={40}/>
-                        </ScrollView>
 
-                        
+                                <Spacer/>
+
+                                <Pressable 
+                                onPress={() => router.push('auth/signUp')}
+                                style={styles.buttonStyle}>
+                                    <Text style={{fontSize: 30, color: 'black'}}>Sign in</Text>
+                                </Pressable>
+                            </View>
+    
                     </KeyboardAvoidingView>
 
                 </ImageBackground>
@@ -67,14 +62,29 @@ const styles = StyleSheet.create({
         height: height,
         resizeMode: 'cover'
     },
-    scrollContent: {
-        flexGrow: 1,
-        justifyContent: 'center',
-        alignItems: 'center'
-    },
     contentContainer: {
         flex: 1,
         alignItems: 'center',
-        justifyContent: 'flex-end',
+        justifyContent: 'center',
+    },
+    textInputStyle : {
+        borderColor: 'gray', 
+        borderWidth: 1, 
+        padding: 10, 
+        backgroundColor: '#1c1d20ff', 
+        width: width * 0.85, 
+        height: 55, 
+        borderRadius: 15,
+        color: 'white',
+        fontSize: 15
+    },
+    buttonStyle: {
+        alignItems: 'center', 
+        justifyContent: 'center',
+        backgroundColor: 'rgba(238, 238, 238, 0.57)', 
+        width: width * 0.65, 
+        height: 50, 
+        borderRadius: 20
+
     }
 })
